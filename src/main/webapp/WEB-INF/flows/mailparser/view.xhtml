@@ -1,0 +1,36 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                template="/WEB-INF/layouts/standard.xhtml">
+
+    <ui:define name="title">Mail-Parser sample</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:fieldset legend="Mail Details">
+                <h:panelGroup layout="block" styleClass="success" rendered="${not empty parsedMail}">
+                    <h:outputLabel for="email">Email items: </h:outputLabel>
+                    <h:outputText id="email" value="${parsedMail}"/>
+                </h:panelGroup>
+                <p:messages/>
+                <p>
+                    <h:outputLabel for="mailSource">First Name: </h:outputLabel><br/>
+                    <h:inputTextarea cols="30" rows="10" id="mailSource" value="#{mailBean.source}" />
+                </p>
+                <p>
+                    <p:commandButton value="Parse" action="parse" execute="@form" update="@form"/>&nbsp;
+                    <p:commandButton value="Exit" action="exit"/>
+                </p>
+                <hr/>
+                <pre>
+					<span class="alt">
+	&lt;p:commandButton value="Parse" action="parse" execute="@form" update="@form"/&gt;
+					</span>
+				</pre>
+            </p:fieldset>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

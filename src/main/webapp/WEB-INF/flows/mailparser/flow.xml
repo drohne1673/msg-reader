@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow https://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+	parent="parent-flow">
+
+	<!--
+		Also see ../parent-flow.xml. 
+	-->
+
+	<var name="mailBean" class="org.hivesoft.processing.msgreader.webflow.data.Mail" />
+
+	<view-state id="view">
+		<transition on="parse" >
+			<evaluate expression="mailBean.parseMail(flowRequestContext)"
+				result="viewScope.parsedMail" />
+		</transition>
+	</view-state>
+
+</flow>
