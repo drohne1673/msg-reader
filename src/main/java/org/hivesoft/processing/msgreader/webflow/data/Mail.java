@@ -8,6 +8,7 @@ import javax.mail.Header;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
+import javax.validation.constraints.NotEmpty;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class Mail implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
+  @NotEmpty
   private String source;
 
   public Mail() {
@@ -35,7 +37,7 @@ public class Mail implements Serializable {
     this.source = source;
   }
 
-  public Collection<String> parseMail(RequestContext context) {
+  public Collection<MailHeader> parseMail(RequestContext context) {
 
     boolean hasMail = StringUtils.hasText(source);
 
@@ -49,13 +51,15 @@ public class Mail implements Serializable {
 
     Session mailSession = Session.getDefaultInstance(new Properties(), null);
     InputStream srcIn = new ByteArrayInputStream(source.getBytes(StandardCharsets.UTF_8));
-    Collection<String> result = new ArrayList<>();
+    Collection<MailHeader> result = new ArrayList<>();
     try {
       MimeMessage message = new MimeMessage(mailSession, srcIn);
       Enumeration<Header> allHeaders = message.getAllHeaders();
       while (allHeaders.hasMoreElements()) {
         Header header = allHeaders.nextElement();
-        result.add(header.getName() + ": " + header.getValue());
+        result.add(new MailHeader(header.getName(), header.getValue()));
+//        System.out.println("Added header: " + header.getName());
+//        result.add(header.getName() + ": " + header.getValue());
       }
     } catch (MessagingException e) {
       throw new IllegalArgumentException(e);

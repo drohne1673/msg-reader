@@ -16,11 +16,11 @@ class MailTest extends AbstractMarshallingTestBase {
     String mailAsString = readFile("samples/hotels.eml");
     classUnderTest = new Mail(mailAsString);
 
-    Collection<String> parsedMail = classUnderTest.parseMail(null);
+    Collection<MailHeader> parsedMail = classUnderTest.parseMail(null);
 
     parsedMail.forEach(System.out::println);
     assertThat(parsedMail)
-            .contains("MIME-Version: 1.0")
+            .contains(new MailHeader("MIME-Version", "1.0"))
             .hasSize(20);
   }
 }

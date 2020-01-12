@@ -42,8 +42,6 @@
     <tiles.version>3.0.8</tiles.version>
 
     <!-- test -->
-    <!--    <easymock.version>3.4</easymock.version>-->
-    <!--    <junit.version>4.12</junit.version>-->
     <junit5.version>5.5.2</junit5.version>
     <assertj.version>3.14.0</assertj.version>
 
@@ -124,13 +122,11 @@
       <version>${primefaces.version}</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
     <dependency>
       <groupId>com.sun.mail</groupId>
       <artifactId>javax.mail</artifactId>
       <version>1.6.2</version>
     </dependency>
-
 
     <!-- JSF-303 Dependency Injection -->
     <dependency>
