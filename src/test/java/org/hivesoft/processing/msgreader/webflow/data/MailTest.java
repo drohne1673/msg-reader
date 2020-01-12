@@ -13,7 +13,7 @@ class MailTest extends AbstractMarshallingTestBase {
 
   @Test
   void parseMail_valid() {
-    String mailAsString = readFile("samples/hotels.msg");
+    String mailAsString = readFile("samples/hotels.eml");
     classUnderTest = new Mail(mailAsString);
 
     Collection<String> parsedMail = classUnderTest.parseMail(null);
