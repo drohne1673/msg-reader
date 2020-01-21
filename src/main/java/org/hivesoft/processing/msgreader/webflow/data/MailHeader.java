@@ -1,6 +1,7 @@
 package org.hivesoft.processing.msgreader.webflow.data;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class MailHeader implements Serializable {
 
@@ -20,6 +21,20 @@ public class MailHeader implements Serializable {
 
   public String getValue() {
     return this.value;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    MailHeader that = (MailHeader) o;
+    return Objects.equals(name, that.name) &&
+            Objects.equals(value, that.value);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, value);
   }
 
   @Override
