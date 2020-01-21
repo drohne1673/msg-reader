@@ -58,8 +58,6 @@ public class Mail implements Serializable {
       while (allHeaders.hasMoreElements()) {
         Header header = allHeaders.nextElement();
         result.add(new MailHeader(header.getName(), header.getValue()));
-//        System.out.println("Added header: " + header.getName());
-//        result.add(header.getName() + ": " + header.getValue());
       }
     } catch (MessagingException e) {
       throw new IllegalArgumentException(e);

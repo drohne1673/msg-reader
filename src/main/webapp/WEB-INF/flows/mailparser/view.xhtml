@@ -11,20 +11,7 @@
         <h:form>
             <p:fieldset legend="Mail Details">
                 <h:panelGroup layout="block" styleClass="success" rendered="${not empty parsedMail}">
-<!--                    <h:outputLabel for="email">Email items: </h:outputLabel>-->
-<!--                    <h:outputText id="email" value="${parsedMail}"/>-->
                     <h:outputLabel for="headers">Email Headers: </h:outputLabel>
-<!--                    <p:dataTable id="headers" var="header" value="#{parsedMail}">-->
-<!--                        <p:column headerText="Name">-->
-<!--                            <h:outputText value="#{header.name}" />-->
-<!--                        </p:column>-->
-<!--                        <p:column headerText="Value">-->
-<!--                            <h:outputText value="#{header.value}" />-->
-<!--                        </p:column>-->
-<!--                        <p:column headerText="text">-->
-<!--                            <h:outputText value="#{header}" />-->
-<!--                        </p:column>-->
-<!--                    </p:dataTable>-->
                     <p:dataList id="headers" value="#{parsedMail}" var="headerl" type="ordered">
                         #{headerl.name}, #{headerl.value}
                     </p:dataList>
