@@ -32,7 +32,7 @@
     <hibernate.version>5.2.12.Final</hibernate.version>
     <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
     <jaxb.version>2.2.3</jaxb.version>
-    <log4j.version>2.13.3</log4j.version>
+    <log4j.version>2.15.0</log4j.version>
 
     <!-- web -->
     <mojarra.version>2.2.16</mojarra.version>
